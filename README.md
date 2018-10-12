@@ -14,12 +14,27 @@ A database to manage concert venues in Brussels.
 - [SQL DDL](sql/concert_ddl.sql)
 - [SQL checks](sql/concert_checks.sql)
 - [SQL triggers](sql/concert_triggers.sql)
-- [SQL access control](sql/access_control.sql)
+- [SQL access control](sql/concert_access_control.sql)
 - [SQL views](sql/concert_views.sql)
 
 ## Example query
 
 ```
+# Show all future Lady Gaga concerts
+SELECT
+    Nom_Scene,
+    Partie,
+    S.Nom_Lieu,
+    Nom_Salle,
+    Date,
+    Heure_Debut,
+    HEURE_Fin
+FROM PRESTATION P
+INNER JOIN ARTISTE A ON P.ID_Artiste = A.ID_Artiste
+INNER JOIN CONCERT C ON P.ID_Concert = C.ID_Concert
+INNER JOIN SALLE S ON C.ID_Salle = S.ID_Salle
+WHERE Nom_Scene LIKE '%lady gaga%'
+ORDER BY Date;
 ```
 
 ## Purpose
