@@ -20,7 +20,7 @@ A database to manage concert venues in Brussels.
 ## Example query
 
 ```
-# Show all future Lady Gaga concerts
+-- Show all future Lady Gaga concerts
 SELECT
     Nom_Scene,
     Partie,
